@@ -5,10 +5,15 @@ import { formatPrice } from "../../utils/currency";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   box-shadow: 0 0 10px darkgray;
   padding: 1rem;
   background-color: #fff;
+
+  & h3,
+  h4 {
+    padding: 2rem 0 1rem;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -16,7 +21,7 @@ const ProductImage = styled.img`
 `;
 
 const RemoveIcon = styled.span`
-  padding-top: 1rem;
+  padding-top: 3rem;
   font-size: 2rem;
 `;
 
@@ -33,6 +38,7 @@ export default function BasketItem({ product }) {
       <ProductImage src={product.image} alt="whisky" />
       <h3>{product.name}</h3>
       <h4>{formatPrice(product.price)}</h4>
+      <h4>Quantity: {product.quantity}</h4>
       <RemoveIcon
         className="material-symbols-outlined"
         onClick={removeFromBasket}

@@ -29,7 +29,13 @@ const AddButton = styled.button`
 export default function Whisky({ whisky }) {
   const [basket, setBasket] = useContext(BasketContext);
   function addToBasket() {
-    setBasket([...basket, whisky]);
+    if (basket.includes(whisky)) {
+      const basketWhisky = basket.find((item) => item === whisky);
+      basketWhisky.quantity += 1;
+    } else {
+      whisky.quantity = 1;
+      setBasket([...basket, whisky]);
+    }
   }
 
   return (
@@ -41,7 +47,7 @@ export default function Whisky({ whisky }) {
           <h4>{formatPrice(whisky.price)}</h4>
         </aside>
         <AddButton onClick={addToBasket}>
-          <span class="material-symbols-outlined">add</span>
+          <span className="material-symbols-outlined">add</span>
         </AddButton>
       </section>
     </StyledWhisky>
