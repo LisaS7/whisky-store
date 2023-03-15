@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import BasketContext from "../../context/BasketContext";
+import { formatPrice } from "../../utils/currency";
 
 const Container = styled.div`
   display: grid;
@@ -27,16 +28,11 @@ export default function BasketItem({ product }) {
     setBasket(newBasketContents);
   }
 
-  const formattedPrice = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  }).format(product.price / 100);
-
   return (
     <Container>
       <ProductImage src={product.image} alt="whisky" />
       <h3>{product.name}</h3>
-      <h4>{formattedPrice}</h4>
+      <h4>{formatPrice(product.price)}</h4>
       <RemoveIcon
         className="material-symbols-outlined"
         onClick={removeFromBasket}
