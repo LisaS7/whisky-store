@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import WhiskyBox from "./containers/WhiskyBox";
+import BasketBox from "./containers/BasketBox";
 import BasketContext from "./context/BasketContext";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="products" element={<WhiskyBox />} />
+            <Route path="basket" element={<BasketBox />} />
           </Routes>
         </BasketContext.Provider>
       </Router>

@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
   & ul {
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin: 0;
   }
   & a {
     text-decoration: none;
@@ -25,6 +30,9 @@ export default function WhiskyNavbar() {
           <Link to="/products">Products</Link>
         </li>
       </ul>
+      <Link to="/basket">
+        <span className="material-symbols-outlined">shopping_cart</span>
+      </Link>
     </Nav>
   );
 }
