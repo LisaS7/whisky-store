@@ -4,10 +4,14 @@ import BasketContext from "../../context/BasketContext";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   box-shadow: 0 0 10px darkgray;
   padding: 1rem;
   background-color: #fff;
+`;
+
+const ProductImage = styled.img`
+  width: 9rem;
 `;
 
 const RemoveIcon = styled.span`
@@ -27,8 +31,10 @@ export default function BasketItem({ product }) {
     style: "currency",
     currency: "GBP",
   }).format(product.price / 100);
+
   return (
     <Container>
+      <ProductImage src={product.image} alt="whisky" />
       <h3>{product.name}</h3>
       <h4>{formattedPrice}</h4>
       <RemoveIcon

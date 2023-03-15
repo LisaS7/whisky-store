@@ -1,6 +1,6 @@
 import React from "react";
 import WhiskyList from "../components/Whisky/WhiskyList";
-import products from "../data/products.json";
+import { products } from "../data/products.js";
 
 export default function WhiskyBox() {
   return (
