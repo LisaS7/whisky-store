@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import BasketContext from "../../context/BasketContext";
 
 const Container = styled.div`
   display: grid;
@@ -9,7 +10,19 @@ const Container = styled.div`
   background-color: #fff;
 `;
 
+const RemoveIcon = styled.span`
+  padding-top: 1rem;
+  font-size: 2rem;
+`;
+
 export default function BasketItem({ product }) {
+  const [basket, setBasket] = useContext(BasketContext);
+
+  function removeFromBasket() {
+    const newBasketContents = basket.filter((item) => item.id !== product.id);
+    setBasket(newBasketContents);
+  }
+
   const formattedPrice = new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP",
@@ -18,7 +31,12 @@ export default function BasketItem({ product }) {
     <Container>
       <h3>{product.name}</h3>
       <h4>{formattedPrice}</h4>
-      <span className="material-symbols-outlined">disabled_by_default</span>
+      <RemoveIcon
+        className="material-symbols-outlined"
+        onClick={removeFromBasket}
+      >
+        disabled_by_default
+      </RemoveIcon>
     </Container>
   );
 }
