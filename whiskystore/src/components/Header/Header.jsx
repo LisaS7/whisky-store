@@ -5,9 +5,10 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: 2px solid #e2c7a5;
   padding: 2rem;
-  background-color: #000;
+  background-color: #171515;
   color: #bb9457;
 `;
 
