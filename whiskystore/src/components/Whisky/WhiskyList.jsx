@@ -10,7 +10,9 @@ const WhiskySection = styled.section`
 `;
 
 export default function WhiskyList({ products }) {
-  const whiskies = products.map((product) => <Whisky whisky={product} />);
+  const whiskies = products.map((product) => (
+    <Whisky key={product.id} whisky={product} />
+  ));
 
   return <WhiskySection>{whiskies}</WhiskySection>;
 }

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
+import BasketContext from "../../context/BasketContext";
 
 const StyledWhisky = styled.div`
   padding: 2rem;
@@ -8,5 +9,15 @@ const StyledWhisky = styled.div`
 `;
 
 export default function Whisky({ whisky }) {
-  return <StyledWhisky>{whisky.name}</StyledWhisky>;
+  const [basket, setBasket] = useContext(BasketContext);
+  function addToBasket() {
+    setBasket([...basket, whisky]);
+  }
+
+  return (
+    <StyledWhisky>
+      {whisky.name}
+      <button onClick={addToBasket}>+</button>
+    </StyledWhisky>
+  );
 }
