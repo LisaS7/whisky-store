@@ -29,6 +29,7 @@ export default function BasketItem({ product }) {
   const [basket, setBasket] = useContext(BasketContext);
 
   function removeFromBasket() {
+    product.quantity = 0;
     const newBasketContents = basket.filter((item) => item.id !== product.id);
     setBasket(newBasketContents);
   }

@@ -9,7 +9,7 @@ const WhiskyCard = styled.div`
   padding: 1rem 3rem 1rem 0;
   background-color: #171515;
   color: #efe3d4;
-  box-shadow: 0 0 15px #311605;
+  box-shadow: 0 0 15px #130801;
   border: 2px solid #e2c7a5;
   border-radius: 10px;
 
@@ -61,7 +61,7 @@ export default function Whisky({ whisky }) {
         <button onClick={addToBasket}>
           <span className="material-symbols-outlined">add</span>
         </button>
-        <p>{whisky.quantity && whisky.quantity + " in basket"}</p>
+        <p>{whisky.quantity > 0 && whisky.quantity + " in basket"}</p>
       </ButtonContainer>
     </WhiskyCard>
   );
