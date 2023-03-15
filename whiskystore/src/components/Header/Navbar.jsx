@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import BasketContext from "../../context/BasketContext";
 
 const Nav = styled.nav`
   display: flex;
@@ -19,7 +20,29 @@ const Nav = styled.nav`
   }
 `;
 
+const BasketDisplay = styled.div`
+  & p {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #e8c896;
+    color: #3b3836;
+    padding: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  & span {
+    position: relative;
+    font-size: 2.5rem;
+  }
+`;
+
 export default function WhiskyNavbar() {
+  const [basket] = useContext(BasketContext);
+  const basketTotal = basket.reduce((total, item) => total + item.quantity, 0);
   return (
     <Nav>
       <ul>
@@ -31,7 +54,10 @@ export default function WhiskyNavbar() {
         </li>
       </ul>
       <Link to="/basket">
-        <span className="material-symbols-outlined">shopping_cart</span>
+        <BasketDisplay>
+          <span className="material-symbols-outlined">shopping_cart</span>
+          <p>{basketTotal}</p>
+        </BasketDisplay>
       </Link>
     </Nav>
   );
