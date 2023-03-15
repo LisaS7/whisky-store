@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   margin-bottom: 4rem;
   border-bottom: 2px solid #e2c7a5;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 6rem;
   background-color: #171515;
   color: #bb9457;
 `;
