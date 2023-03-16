@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
@@ -9,7 +8,6 @@ import { store } from "./state/store";
 import { Provider } from "react-redux";
 
 function App() {
-  const [basket, setBasket] = useState([]);
   return (
     <div className="App">
       <Router>

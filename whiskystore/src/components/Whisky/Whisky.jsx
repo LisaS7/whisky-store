@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToBasket, removeFromBasket } from "../../state/basketSlice";
+import { addToBasket } from "../../state/basketSlice";
 import styled from "styled-components";
 import { formatPrice } from "../../utils/currency";
 
@@ -47,18 +47,21 @@ export default function Whisky({ whisky }) {
 
   return (
     <WhiskyCard>
-      <img src={whisky.image} />
+      <img src={whisky.image} alt="whisky" />
       <WhiskyDetails>
         <aside>
-          <h2>{whisky.name}</h2>
-          <h4>{formatPrice(whisky.price)}</h4>
+          <h2 data-cy="card-name">{whisky.name}</h2>
+          <h4 data-cy="card-price">{formatPrice(whisky.price)}</h4>
         </aside>
       </WhiskyDetails>
       <ButtonContainer>
-        <button onClick={() => dispatch(addToBasket(whisky))}>
+        <button
+          data-cy="card-add-button"
+          onClick={() => dispatch(addToBasket(whisky))}
+        >
           <span className="material-symbols-outlined">add</span>
         </button>
-        <p>{quantity > 0 && quantity + " in basket"}</p>
+        <p data-cy="card-quantity">{quantity > 0 && quantity + " in basket"}</p>
       </ButtonContainer>
     </WhiskyCard>
   );
