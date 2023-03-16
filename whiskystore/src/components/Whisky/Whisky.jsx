@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../../state/basketSlice";
 import styled from "styled-components";
 import { formatPrice } from "../../utils/currency";
@@ -38,6 +38,12 @@ const ButtonContainer = styled.div`
 
 export default function Whisky({ whisky }) {
   const dispatch = useDispatch();
+  const { basket } = useSelector((state) => state.basket);
+  let quantity;
+  if (basket.length) {
+    const basketWhisky = basket.find((item) => item.id === whisky.id);
+    quantity = basketWhisky ? basketWhisky.quantity : 0;
+  }
 
   return (
     <WhiskyCard>
@@ -52,7 +58,7 @@ export default function Whisky({ whisky }) {
         <button onClick={() => dispatch(addToBasket(whisky))}>
           <span className="material-symbols-outlined">add</span>
         </button>
-        <p>{whisky.quantity > 0 && whisky.quantity + " in basket"}</p>
+        <p>{quantity > 0 && quantity + " in basket"}</p>
       </ButtonContainer>
     </WhiskyCard>
   );
