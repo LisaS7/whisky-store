@@ -1,6 +1,6 @@
-import { getCyId } from "../../utils";
+import { getCyId } from "../utils";
 
-describe("template spec", () => {
+describe("whisky card tests", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/products");
   });
