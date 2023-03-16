@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   basket: [],
@@ -10,20 +10,14 @@ export const basketSlice = createSlice({
   reducers: {
     addToBasket: (state, action) => {
       const item = action.payload;
-      const basketItem = state.basket.find((x) => x.id === item.id);
+      const basketItem = state.basket.find((whisky) => whisky.id === item.id);
 
       // CreateSlice uses Immer which wraps objects in a proxy object -  if using console.log here then
       // need to use current() to get actual underlying objects (import from rtk above)
       if (basketItem) {
-        const index = state.basket.indexOf(item);
-        state.basket.splice(index);
-
-        const newItem = { ...basketItem };
-        newItem.quantity++;
-        state.basket.push(newItem);
+        basketItem.quantity++;
       } else {
-        item.quantity = 1;
-        state.basket.push(item);
+        state.basket.push({ ...item, quantity: 1 });
       }
     },
     removeFromBasket: (state, action) => {
