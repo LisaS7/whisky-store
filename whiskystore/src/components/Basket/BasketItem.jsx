@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import BasketContext from "../../context/BasketContext";
+import { removeFromBasket } from "../../state/basketSlice";
 import { formatPrice } from "../../utils/currency";
 
 const Container = styled.div`
@@ -26,13 +27,7 @@ const RemoveIcon = styled.span`
 `;
 
 export default function BasketItem({ product }) {
-  const [basket, setBasket] = useContext(BasketContext);
-
-  function removeFromBasket() {
-    product.quantity = 0;
-    const newBasketContents = basket.filter((item) => item.id !== product.id);
-    setBasket(newBasketContents);
-  }
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -42,7 +37,7 @@ export default function BasketItem({ product }) {
       <h4>Quantity: {product.quantity}</h4>
       <RemoveIcon
         className="material-symbols-outlined"
-        onClick={removeFromBasket}
+        onClick={() => dispatch(removeFromBasket(product))}
       >
         disabled_by_default
       </RemoveIcon>

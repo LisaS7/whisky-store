@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import BasketContext from "../../context/BasketContext";
+import React from "react";
 import BasketItem from "./BasketItem";
 
 export default function BasketList() {
-  const [basket] = useContext(BasketContext);
+  // needs redux state
+  const basket = [];
   if (basket.length) {
     const basketContents = basket.map((product, index) => (
       <BasketItem key={index} product={product} />

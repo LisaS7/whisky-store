@@ -5,21 +5,22 @@ import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import WhiskyBox from "./containers/WhiskyBox";
 import BasketBox from "./containers/BasketBox";
-import BasketContext from "./context/BasketContext";
+import { store } from "./state/store";
+import { Provider } from "react-redux";
 
 function App() {
   const [basket, setBasket] = useState([]);
   return (
     <div className="App">
       <Router>
-        <BasketContext.Provider value={[basket, setBasket]}>
+        <Provider store={store}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="products" element={<WhiskyBox />} />
             <Route path="basket" element={<BasketBox />} />
           </Routes>
-        </BasketContext.Provider>
+        </Provider>
       </Router>
     </div>
   );

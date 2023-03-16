@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import BasketContext from "../../context/BasketContext";
 
 const Nav = styled.nav`
   display: flex;
@@ -41,7 +41,7 @@ const BasketDisplay = styled.div`
 `;
 
 export default function WhiskyNavbar() {
-  const [basket] = useContext(BasketContext);
+  const { basket } = useSelector((state) => state.basket);
   const basketTotal = basket.reduce((total, item) => total + item.quantity, 0);
   return (
     <Nav>

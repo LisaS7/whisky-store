@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addToBasket, removeFromBasket } from "../../state/basketSlice";
 import styled from "styled-components";
-import BasketContext from "../../context/BasketContext";
 import { formatPrice } from "../../utils/currency";
 
 const WhiskyCard = styled.div`
@@ -36,17 +37,7 @@ const ButtonContainer = styled.div`
 `;
 
 export default function Whisky({ whisky }) {
-  const [basket, setBasket] = useContext(BasketContext);
-  function addToBasket() {
-    if (basket.includes(whisky)) {
-      const basketWhisky = basket.find((item) => item === whisky);
-      basketWhisky.quantity += 1;
-      setBasket([...basket]);
-    } else {
-      whisky.quantity = 1;
-      setBasket([...basket, whisky]);
-    }
-  }
+  const dispatch = useDispatch();
 
   return (
     <WhiskyCard>
@@ -58,7 +49,7 @@ export default function Whisky({ whisky }) {
         </aside>
       </WhiskyDetails>
       <ButtonContainer>
-        <button onClick={addToBasket}>
+        <button onClick={() => dispatch(addToBasket(whisky))}>
           <span className="material-symbols-outlined">add</span>
         </button>
         <p>{whisky.quantity > 0 && whisky.quantity + " in basket"}</p>
