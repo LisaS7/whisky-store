@@ -1,9 +1,9 @@
 import React from "react";
 import BasketItem from "./BasketItem";
+import { useSelector } from "react-redux";
 
 export default function BasketList() {
-  // needs redux state
-  const basket = [];
+  const { basket } = useSelector((state) => state.basket);
   if (basket.length) {
     const basketContents = basket.map((product, index) => (
       <BasketItem key={index} product={product} />
