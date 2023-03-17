@@ -1,6 +1,13 @@
 import React from "react";
 import BasketItem from "./BasketItem";
 import { useSelector } from "react-redux";
+import EmptyBasket from "./EmptyBasket";
+import BasketTotal from "./BasketTotal";
+import styled from "styled-components";
+
+const Container = styled.section`
+  display: flex;
+`;
 
 export default function BasketList() {
   const { basket } = useSelector((state) => state.basket);
@@ -10,8 +17,13 @@ export default function BasketList() {
       <BasketItem key={index} product={product} />
     ));
 
-    return <section>{basketItems}</section>;
+    return (
+      <Container>
+        <div>{basketItems}</div>
+        <BasketTotal />
+      </Container>
+    );
   } else {
-    return <h2>No items in basket</h2>;
+    return <EmptyBasket />;
   }
 }
