@@ -34,7 +34,7 @@ const ImageOverlay = styled.div`
     font-size: 2rem;
     font-family: "Lobster", cursive;
     background-color: var(--dark-smoke);
-    color: var(--gold-text);
+    color: var(--gold);
   }
 `;
 

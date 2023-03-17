@@ -21,7 +21,7 @@ const Container = styled.section`
   }
 
   & button {
-    background-color: var(--gold-text);
+    background-color: var(--gold);
     padding: 1rem 1.5rem;
     font-size: 1.5rem;
   }

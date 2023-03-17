@@ -23,17 +23,17 @@ const Nav = styled.nav`
 
 const BasketDisplay = styled.div`
   & p {
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
-    background-color: var(--lighter);
+    background-color: var(--dark-gold);
     color: var(--background);
     padding: 0.2rem;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 800;
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 12px;
+    right: 25px;
   }
   & span {
     position: relative;
