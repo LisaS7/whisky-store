@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../../state/basketSlice";
 import styled from "styled-components";
+import { ButtonContainer } from "../components";
 import { formatPrice } from "../../utils/currency";
 
 const WhiskyCard = styled.div`
@@ -27,14 +28,6 @@ const WhiskyCard = styled.div`
 const WhiskyDetails = styled.div`
   display: flex;
   text-align: left;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-left: auto;
 `;
 
 export default function Whisky({ whisky }) {

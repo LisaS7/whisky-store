@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { removeFromBasket } from "../../state/basketSlice";
+import { addToBasket, removeFromBasket } from "../../state/basketSlice";
 import { formatPrice } from "../../utils/currency";
+import { ButtonContainer } from "../components";
 
 const Container = styled.div`
   display: grid;
@@ -34,7 +35,26 @@ export default function BasketItem({ product }) {
       <ProductImage src={product.image} alt="whisky" />
       <h3 data-cy="product-name">{product.name}</h3>
       <h4>{formatPrice(product.price)}</h4>
-      <h4>Quantity: {product.quantity}</h4>
+      <ButtonContainer>
+        {product.quantity > 0 ? (
+          <button
+            data-cy="remove-button"
+            onClick={() => dispatch(removeFromBasket(product))}
+          >
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+        ) : null}
+
+        <p data-cy="card-quantity">
+          {product.quantity > 0 && product.quantity}
+        </p>
+        <button
+          data-cy="card-add-button"
+          onClick={() => dispatch(addToBasket(product))}
+        >
+          <span className="material-symbols-outlined">add</span>
+        </button>
+      </ButtonContainer>
       <RemoveIcon
         className="material-symbols-outlined"
         onClick={() => dispatch(removeFromBasket(product))}
