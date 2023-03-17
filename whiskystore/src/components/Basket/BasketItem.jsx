@@ -9,7 +9,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   box-shadow: 0 0 10px darkgray;
   padding: 1rem;
-  background-color: #fff;
+  background-color: var(--dark-smoke);
 
   & h3,
   h4 {

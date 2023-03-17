@@ -7,7 +7,7 @@ const TotalSection = styled.section`
   padding: 2rem;
   min-width: 20vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--dark-smoke);
   border-left: 2px solid #1a1a19;
 `;
 
