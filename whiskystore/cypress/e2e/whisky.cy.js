@@ -15,6 +15,16 @@ describe("whisky card tests", () => {
   });
   it("should display quantity once item is in basket", () => {
     getCyId("card-add-button").first().click();
-    getCyId("card-quantity").first().should("have.text", "1 in basket");
+    getCyId("card-quantity").first().should("have.text", "1");
+  });
+  it("should show remove button if quantity is greater than 0", () => {
+    getCyId("card-add-button").first().click();
+    getCyId("card-remove-button").should("exist");
+  });
+  it("should not show quantity if item is added and then removed", () => {
+    getCyId("card-add-button").first().click();
+    getCyId("card-remove-button").first().click();
+    getCyId("card-quantity").first().should("have.text", "");
+    getCyId("card-remove-button").should("not.exist");
   });
 });

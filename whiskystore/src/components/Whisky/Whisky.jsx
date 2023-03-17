@@ -58,7 +58,7 @@ export default function Whisky({ whisky }) {
       <ButtonContainer>
         {quantity > 0 ? (
           <button
-            data-cy="remove-button"
+            data-cy="card-remove-button"
             onClick={() => dispatch(removeFromBasket(whisky))}
           >
             <span class="material-symbols-outlined">remove</span>
