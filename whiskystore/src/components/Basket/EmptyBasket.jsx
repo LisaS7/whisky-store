@@ -24,6 +24,7 @@ const Container = styled.section`
     background-color: var(--gold);
     padding: 1rem 1.5rem;
     font-size: 1.5rem;
+    font-weight: 600;
   }
 `;
 
@@ -33,7 +34,7 @@ export default function EmptyBasket() {
       <img src={emptyCart} alt="empty shopping cart" />
       <h2>No items in basket</h2>
       <Link to="/products">
-        <button>Go Shopping!</button>
+        <button>Go Shopping </button>
       </Link>
     </Container>
   );

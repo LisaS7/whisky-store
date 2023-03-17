@@ -9,12 +9,17 @@ const StyledHeader = styled.header`
   padding: 2rem 2rem 2rem 6rem;
   background-color: var(--header-background);
   color: var(--gold);
+
+  & h1 {
+    font-size: 3rem;
+    margin-left: 5rem;
+  }
 `;
 
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Whisky Shop</h1>
+      <h1>🥃 &nbsp;Array of Malts </h1>
       <WhiskyNavbar />
     </StyledHeader>
   );
