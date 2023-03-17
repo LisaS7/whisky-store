@@ -11,4 +11,10 @@ describe("header and navbar tests", () => {
     getCyId("card-add-button").first().click();
     getCyId("nav-quantity").should("have.text", 1);
   });
+  it("should show quantity for multiple items", () => {
+    getCyId("card-add-button").first().click();
+    getCyId("card-add-button").first().click();
+    getCyId("card-add-button").eq(1).click();
+    getCyId("nav-quantity").should("have.text", 3);
+  });
 });
