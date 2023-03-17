@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./containers/Layout";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import WhiskyBox from "./containers/WhiskyBox";
@@ -12,11 +13,12 @@ function App() {
     <div className="App">
       <Router>
         <Provider store={store}>
-          <Header />
           <Routes>
+            <Route element={<Layout />}>
+              <Route path="products" element={<WhiskyBox />} />
+              <Route path="basket" element={<BasketBox />} />
+            </Route>
             <Route path="/" element={<Home />} />
-            <Route path="products" element={<WhiskyBox />} />
-            <Route path="basket" element={<BasketBox />} />
           </Routes>
         </Provider>
       </Router>

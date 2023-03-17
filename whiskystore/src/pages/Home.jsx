@@ -21,7 +21,7 @@ const ImageOverlay = styled.div`
   color: var(--dark-smoke);
   text-align: center;
   position: absolute;
-  top: 45vh;
+  top: 30vh;
   left: 14vw;
 
   & h1 {

@@ -6,7 +6,8 @@ import BasketTotal from "./BasketTotal";
 import styled from "styled-components";
 
 const Container = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 `;
 
 export default function BasketList() {

@@ -6,6 +6,7 @@ import { formatPrice } from "../../utils/currency";
 const TotalSection = styled.section`
   padding: 2rem;
   min-width: 20vw;
+  height: 100vh;
   background-color: #fff;
   border-left: 2px solid #1a1a19;
 `;
