@@ -6,10 +6,10 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   margin-bottom: 4rem;
-  border-bottom: 2px solid #e2c7a5;
+  border-bottom: 2px solid var(--gold-text);
   padding: 2rem 2rem 2rem 6rem;
-  background-color: #171515;
-  color: #bb9457;
+  background-color: var(--header-background);
+  color: var(--gold-text);
 `;
 
 export default function Header() {

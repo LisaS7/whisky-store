@@ -15,8 +15,9 @@ const Nav = styled.nav`
     margin: 0;
   }
   & a {
+    font-size: 1.5rem;
     text-decoration: none;
-    color: #e8c896;
+    color: var(--lighter);
   }
 `;
 
@@ -25,8 +26,8 @@ const BasketDisplay = styled.div`
     width: 15px;
     height: 15px;
     border-radius: 100%;
-    background-color: #e8c896;
-    color: #3b3836;
+    background-color: var(--lighter);
+    color: var(--background);
     padding: 0.2rem;
     font-size: 0.8rem;
     font-weight: 800;

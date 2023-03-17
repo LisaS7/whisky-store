@@ -10,18 +10,20 @@ const Container = styled.section`
   flex-grow: 1;
   gap: 1rem;
   padding: 2rem;
-  background-color: #696664;
 
   & img {
     width: 10vw;
   }
 
+  & h2 {
+    color: var(--lighter);
+    margin-bottom: 5rem;
+  }
+
   & button {
-    padding: 1rem;
-    border: none;
-    background-color: #bb9457;
-    font-weight: 600;
-    border-radius: 10px;
+    background-color: var(--gold-text);
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
   }
 `;
 

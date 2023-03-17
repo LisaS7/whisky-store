@@ -8,14 +8,18 @@ const WhiskyCard = styled.div`
   display: flex;
   gap: 2rem;
   padding: 1rem 3rem 1rem 0;
-  background-color: #171515;
-  color: #efe3d4;
-  box-shadow: 0 0 15px #130801;
-  border: 2px solid #e2c7a5;
+  background-color: var(--card-bg);
+  color: var(--lighter);
+  box-shadow: 0 0 15px #000;
+  border: 2px solid var(--lighter);
   border-radius: 10px;
 
   & img {
     width: 10rem;
+  }
+
+  & button {
+    border-radius: 50%;
   }
 `;
 
@@ -28,12 +32,6 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  & button {
-    padding: 0.5rem 0.75rem;
-    background-color: #bb9457;
-    border: none;
-  }
 `;
 
 export default function Whisky({ whisky }) {
