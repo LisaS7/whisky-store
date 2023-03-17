@@ -8,7 +8,7 @@ const TotalSection = styled.section`
   min-width: 20vw;
   height: 100vh;
   background-color: var(--dark-smoke);
-  border-left: 2px solid #1a1a19;
+  border-left: 2px solid var(--lighter);
 `;
 
 const SummaryRow = styled.div`
