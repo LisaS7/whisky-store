@@ -22,9 +22,14 @@ export const basketSlice = createSlice({
     },
     removeFromBasket: (state, action) => {
       const item = action.payload;
-      state.basket = state.basket.filter(
-        (basketItem) => basketItem.id !== item.id
-      );
+      const basketItem = state.basket.find((whisky) => whisky.id === item.id);
+      if (basketItem.quantity === 1) {
+        state.basket = state.basket.filter(
+          (basketItem) => basketItem.id !== item.id
+        );
+      } else {
+        basketItem.quantity--;
+      }
     },
   },
 });

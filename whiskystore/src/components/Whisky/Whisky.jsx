@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToBasket } from "../../state/basketSlice";
+import { addToBasket, removeFromBasket } from "../../state/basketSlice";
 import styled from "styled-components";
 import { formatPrice } from "../../utils/currency";
 
@@ -31,8 +31,9 @@ const WhiskyDetails = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin-left: auto;
 `;
 
@@ -55,13 +56,22 @@ export default function Whisky({ whisky }) {
         </aside>
       </WhiskyDetails>
       <ButtonContainer>
+        {quantity > 0 ? (
+          <button
+            data-cy="remove-button"
+            onClick={() => dispatch(removeFromBasket(whisky))}
+          >
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+        ) : null}
+
+        <p data-cy="card-quantity">{quantity > 0 && quantity}</p>
         <button
           data-cy="card-add-button"
           onClick={() => dispatch(addToBasket(whisky))}
         >
           <span className="material-symbols-outlined">add</span>
         </button>
-        <p data-cy="card-quantity">{quantity > 0 && quantity + " in basket"}</p>
       </ButtonContainer>
     </WhiskyCard>
   );
