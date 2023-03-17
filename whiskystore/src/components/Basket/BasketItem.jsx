@@ -30,9 +30,9 @@ export default function BasketItem({ product }) {
   const dispatch = useDispatch();
 
   return (
-    <Container>
+    <Container data-cy="basket-item">
       <ProductImage src={product.image} alt="whisky" />
-      <h3>{product.name}</h3>
+      <h3 data-cy="product-name">{product.name}</h3>
       <h4>{formatPrice(product.price)}</h4>
       <h4>Quantity: {product.quantity}</h4>
       <RemoveIcon

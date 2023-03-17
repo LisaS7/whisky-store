@@ -29,7 +29,7 @@ export default function BasketTotal() {
       </SummaryRow>
       <SummaryRow>
         <h4>Total: </h4>
-        <h3>{formatPrice(basketTotal)}</h3>
+        <h3 data-cy="basket-total">{formatPrice(basketTotal)}</h3>
       </SummaryRow>
       <div></div>
     </TotalSection>

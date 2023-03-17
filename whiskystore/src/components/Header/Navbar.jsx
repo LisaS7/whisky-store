@@ -55,7 +55,9 @@ export default function WhiskyNavbar() {
       </ul>
       <Link to="/basket">
         <BasketDisplay>
-          <span className="material-symbols-outlined">shopping_cart</span>
+          <span data-cy="basket-icon" className="material-symbols-outlined">
+            shopping_cart
+          </span>
           <p data-cy="nav-quantity">{basketTotal}</p>
         </BasketDisplay>
       </Link>
