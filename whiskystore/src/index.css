@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 :root {
   --background: #3b3836;
   --header-background: #171515;
   --card-bg: #171515;
+  --dark-smoke: #181616;
   --gold-text: #bb9457;
   --button-bg: #bb9457;
   --lighter: #efe3d4;
