@@ -22,7 +22,7 @@ const ImageOverlay = styled.div`
   text-align: center;
   position: absolute;
   top: 30vh;
-  left: 14vw;
+  left: 20vw;
 
   & h1 {
     margin: 0;

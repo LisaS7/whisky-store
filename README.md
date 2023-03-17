@@ -34,3 +34,4 @@ Whisky Store is an ecommerce app which allows users to view products and manage 
 ## Resources
 
 <a href="https://www.flaticon.com/free-icons/shopping-cart" title="shopping cart icons">Shopping cart icons created by Flat Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/error-404" title="error 404 icons">Error 404 icons created by monkik - Flaticon</a>
