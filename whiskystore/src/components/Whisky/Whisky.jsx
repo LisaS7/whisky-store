@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToBasket, decreaseQuantity } from "../../state/basketSlice";
 import styled from "styled-components";
-import { ButtonContainer } from "../components";
+import { SmallButton, ButtonContainer } from "../Components";
 import { formatPrice } from "../../utils/currency";
 
 const WhiskyCard = styled.div`
@@ -20,7 +20,6 @@ const WhiskyCard = styled.div`
   }
 
   & button {
-    border-radius: 50%;
     width: 50px;
   }
 `;
@@ -50,21 +49,21 @@ export default function Whisky({ whisky }) {
       </WhiskyDetails>
       <ButtonContainer>
         {quantity > 0 ? (
-          <button
+          <SmallButton
             data-cy="card-remove-button"
             onClick={() => dispatch(decreaseQuantity(whisky))}
           >
             <span class="material-symbols-outlined">remove</span>
-          </button>
+          </SmallButton>
         ) : null}
 
         <p data-cy="card-quantity">{quantity > 0 && quantity}</p>
-        <button
+        <SmallButton
           data-cy="card-add-button"
           onClick={() => dispatch(addToBasket(whisky))}
         >
           <span className="material-symbols-outlined">add</span>
-        </button>
+        </SmallButton>
       </ButtonContainer>
     </WhiskyCard>
   );

@@ -36,4 +36,11 @@ describe("basket tests", () => {
     getCyId("card-remove-button").first().click();
     cy.get("h2").should("have.text", "No items in basket");
   });
+  it("should decrease the quantity of an item", () => {
+    getCyId("card-add-button").first().click();
+    getCyId("card-add-button").first().click();
+    getCyId("card-quantity").first().should("have.text", 3);
+    getCyId("card-decrease-button").first().click();
+    getCyId("card-quantity").first().should("have.text", 2);
+  });
 });

@@ -7,7 +7,7 @@ import {
   removeFromBasket,
 } from "../../state/basketSlice";
 import { formatPrice } from "../../utils/currency";
-import { ButtonContainer } from "../components";
+import { SmallButton, ButtonContainer } from "../Components";
 
 const Container = styled.div`
   display: grid;
@@ -41,23 +41,23 @@ export default function BasketItem({ product }) {
       <h4>{formatPrice(product.price)}</h4>
       <ButtonContainer>
         {product.quantity > 0 ? (
-          <button
+          <SmallButton
             data-cy="card-decrease-button"
             onClick={() => dispatch(decreaseQuantity(product))}
           >
             <span class="material-symbols-outlined">remove</span>
-          </button>
+          </SmallButton>
         ) : null}
 
         <p data-cy="card-quantity">
           {product.quantity > 0 && product.quantity}
         </p>
-        <button
+        <SmallButton
           data-cy="card-add-button"
           onClick={() => dispatch(addToBasket(product))}
         >
           <span className="material-symbols-outlined">add</span>
-        </button>
+        </SmallButton>
       </ButtonContainer>
       <RemoveIcon
         className="material-symbols-outlined"
