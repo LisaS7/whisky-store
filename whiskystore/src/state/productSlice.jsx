@@ -18,7 +18,11 @@ export const productSlice = createSlice({
     },
     filterByRegion: (state, action) => {
       const region = action.payload;
-      state.display = state.products.filter((item) => item.region === region);
+      if (region === "All") {
+        state.display = products;
+      } else {
+        state.display = state.products.filter((item) => item.region === region);
+      }
     },
     reset: (state) => {
       state.products = initialState;

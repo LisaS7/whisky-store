@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import emptyCart from "./empty-cart.png";
+import { MediumButton } from "../Components";
 
 const Container = styled.section`
   display: flex;
@@ -19,13 +20,6 @@ const Container = styled.section`
     color: var(--lighter);
     margin-bottom: 5rem;
   }
-
-  & button {
-    background-color: var(--gold);
-    padding: 1rem 1.5rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
 `;
 
 export default function EmptyBasket() {
@@ -34,7 +28,7 @@ export default function EmptyBasket() {
       <img src={emptyCart} alt="empty shopping cart" />
       <h2>No items in basket</h2>
       <Link to="/products">
-        <button>Go Shopping </button>
+        <MediumButton>Go Shopping </MediumButton>
       </Link>
     </Container>
   );
