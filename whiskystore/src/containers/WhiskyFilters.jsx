@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { titleSearch } from "../state/productSlice";
 import WhiskyRegionSelect from "../components/Whisky/WhiskyRegionSelect";
 
@@ -17,7 +17,6 @@ const SearchBar = styled.div`
 
 export default function WhiskyFilters() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
 
   return (
     <section>
@@ -28,7 +27,7 @@ export default function WhiskyFilters() {
           onChange={(e) => dispatch(titleSearch(e.target.value))}
         />
       </SearchBar>
-      {/* <WhiskyRegionSelect/> */}
+      <WhiskyRegionSelect />
     </section>
   );
 }
