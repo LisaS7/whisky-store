@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { titleSearch } from "../state/productSlice";
 import WhiskyRegionSelect from "../components/Whisky/WhiskyRegionSelect";
 
 const SearchBar = styled.div`
@@ -13,24 +15,20 @@ const SearchBar = styled.div`
   }
 `;
 
-export default function WhiskyFilters({
-  products,
-  setSearch,
-  onRegionSelected,
-}) {
+export default function WhiskyFilters() {
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+
   return (
     <section>
       <SearchBar>
         <label>Search: </label>
         <input
           type="text"
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(e) => dispatch(titleSearch(e.target.value))}
         />
       </SearchBar>
-      <WhiskyRegionSelect
-        products={products}
-        onRegionSelected={onRegionSelected}
-      />
+      {/* <WhiskyRegionSelect/> */}
     </section>
   );
 }
