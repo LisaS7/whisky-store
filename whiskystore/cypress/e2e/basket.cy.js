@@ -28,4 +28,12 @@ describe("basket tests", () => {
   it("should show the total in the summary section", () => {
     getCyId("basket-total").should("have.text", "£206.00");
   });
+  it("should remove an item from the basket", () => {
+    getCyId("card-add-button").first().click();
+    getCyId("card-add-button").first().click();
+    getCyId("card-quantity").first().should("have.text", 3);
+    getCyId("card-remove-button").first().click();
+    getCyId("card-remove-button").first().click();
+    cy.get("h2").should("have.text", "No items in basket");
+  });
 });

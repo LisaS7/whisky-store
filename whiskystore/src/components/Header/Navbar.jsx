@@ -32,7 +32,7 @@ const BasketDisplay = styled.div`
     font-size: 1.2rem;
     font-weight: 800;
     position: absolute;
-    top: 12px;
+    top: 34px;
     right: 25px;
   }
   & span {

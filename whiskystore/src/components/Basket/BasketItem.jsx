@@ -1,7 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addToBasket, removeFromBasket } from "../../state/basketSlice";
+import {
+  addToBasket,
+  decreaseQuantity,
+  removeFromBasket,
+} from "../../state/basketSlice";
 import { formatPrice } from "../../utils/currency";
 import { ButtonContainer } from "../components";
 
@@ -38,8 +42,8 @@ export default function BasketItem({ product }) {
       <ButtonContainer>
         {product.quantity > 0 ? (
           <button
-            data-cy="remove-button"
-            onClick={() => dispatch(removeFromBasket(product))}
+            data-cy="card-decrease-button"
+            onClick={() => dispatch(decreaseQuantity(product))}
           >
             <span class="material-symbols-outlined">remove</span>
           </button>
@@ -57,6 +61,7 @@ export default function BasketItem({ product }) {
       </ButtonContainer>
       <RemoveIcon
         className="material-symbols-outlined"
+        data-cy="card-remove-button"
         onClick={() => dispatch(removeFromBasket(product))}
       >
         disabled_by_default

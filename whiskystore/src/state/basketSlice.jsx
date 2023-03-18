@@ -20,7 +20,7 @@ export const basketSlice = createSlice({
         state.basket.push({ ...item, quantity: 1 });
       }
     },
-    removeFromBasket: (state, action) => {
+    decreaseQuantity: (state, action) => {
       const item = action.payload;
       const basketItem = state.basket.find((whisky) => whisky.id === item.id);
       if (basketItem.quantity === 1) {
@@ -31,8 +31,16 @@ export const basketSlice = createSlice({
         basketItem.quantity--;
       }
     },
+    removeFromBasket: (state, action) => {
+      const item = action.payload;
+      const basketItem = state.basket.find((whisky) => whisky.id === item.id);
+      state.basket = state.basket.filter(
+        (basketItem) => basketItem.id !== item.id
+      );
+    },
   },
 });
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
+export const { addToBasket, decreaseQuantity, removeFromBasket } =
+  basketSlice.actions;
 export default basketSlice.reducer;
