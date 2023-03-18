@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import WhiskyList from "../components/Whisky/WhiskyList";
 import { products } from "../data/products.js";
-
-const SearchBar = styled.div`
-  padding: 2rem;
-  font-size: 1.5rem;
-
-  & input {
-    padding: 0.5rem 2rem;
-    border-radius: 5px;
-    font-size: 1.5rem;
-  }
-`;
+import WhiskyFilters from "./WhiskyFilters";
 
 export default function WhiskyBox() {
   const [search, setSearch] = useState("");
-  let productsList;
+  let productsList = products;
   if (search) {
     productsList = products.filter((product) =>
       product.name.toLowerCase().includes(search.toLowerCase())
@@ -24,15 +13,18 @@ export default function WhiskyBox() {
   } else {
     productsList = products;
   }
+
+  function onRegionSelected(selectedProducts) {
+    productsList = selectedProducts;
+  }
+
   return (
     <main>
-      <SearchBar>
-        <label>Search: </label>
-        <input
-          type="text"
-          onChange={(event) => setSearch(event.target.value)}
-        />
-      </SearchBar>
+      <WhiskyFilters
+        products={productsList}
+        setSearch={setSearch}
+        onRegionSelected={onRegionSelected}
+      />
       <WhiskyList products={productsList} />
     </main>
   );

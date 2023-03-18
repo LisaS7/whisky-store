@@ -53,7 +53,7 @@ export default function Whisky({ whisky }) {
             data-cy="card-remove-button"
             onClick={() => dispatch(decreaseQuantity(whisky))}
           >
-            <span class="material-symbols-outlined">remove</span>
+            <span className="material-symbols-outlined">remove</span>
           </SmallButton>
         ) : null}
 

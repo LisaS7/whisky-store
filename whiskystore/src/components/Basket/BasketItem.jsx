@@ -45,7 +45,7 @@ export default function BasketItem({ product }) {
             data-cy="card-decrease-button"
             onClick={() => dispatch(decreaseQuantity(product))}
           >
-            <span class="material-symbols-outlined">remove</span>
+            <span className="material-symbols-outlined">remove</span>
           </SmallButton>
         ) : null}
 
