@@ -4,31 +4,38 @@ import { products } from "../data/products";
 const initialState = {
   products: products,
   display: products,
+  filters: {
+    search: "",
+    region: "All",
+  },
 };
 
 export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    titleSearch: (state, action) => {
-      const searchWord = action.payload;
+    filterProducts: (state, action) => {
+      const { filterType, filterValue } = action.payload;
+      state.filters[filterType] = filterValue;
+
       state.display = state.products.filter((product) =>
-        product.name.toLowerCase().includes(searchWord.toLowerCase())
+        product.name.toLowerCase().includes(state.filters.search.toLowerCase())
       );
-    },
-    filterByRegion: (state, action) => {
-      const region = action.payload;
-      if (region === "All") {
-        state.display = products;
-      } else {
-        state.display = state.products.filter((item) => item.region === region);
+
+      if (state.filters.region !== "All") {
+        state.display = state.display.filter(
+          (item) => item.region === state.filters.region
+        );
       }
     },
     reset: (state) => {
-      state.products = initialState;
+      console.log("STATE", current(state));
+      state.filters = { search: "", region: "All" };
+      state.display = products;
+      console.log("STATE2", state);
     },
   },
 });
 
-export const { titleSearch, filterByRegion, reset } = productSlice.actions;
+export const { filterProducts, reset } = productSlice.actions;
 export default productSlice.reducer;

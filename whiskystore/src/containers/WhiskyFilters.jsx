@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { titleSearch } from "../state/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { filterProducts, reset } from "../state/productSlice";
 import WhiskyRegionSelect from "../components/Whisky/WhiskyRegionSelect";
 import { MediumButton } from "../components/Components";
 
@@ -30,6 +30,7 @@ const SearchBar = styled.div`
 
 export default function WhiskyFilters() {
   const dispatch = useDispatch();
+  const { filters } = useSelector((state) => state.products);
 
   return (
     <FilterControls>
@@ -37,11 +38,19 @@ export default function WhiskyFilters() {
         <label>Search: </label>
         <input
           type="text"
-          onChange={(e) => dispatch(titleSearch(e.target.value))}
+          onChange={(e) =>
+            dispatch(
+              filterProducts({
+                filterType: "search",
+                filterValue: e.target.value,
+              })
+            )
+          }
+          value={filters.search}
         />
       </SearchBar>
       <WhiskyRegionSelect />
-      <MediumButton>Reset</MediumButton>
+      <MediumButton onClick={() => dispatch(reset())}>Reset</MediumButton>
     </FilterControls>
   );
 }
