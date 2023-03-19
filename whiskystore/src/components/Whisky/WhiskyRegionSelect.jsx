@@ -18,6 +18,7 @@ const Container = styled.div`
 function WhiskyRegionSelect() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const { filters } = useSelector((state) => state.products);
   console.log("products", products);
   const uniqueRegions = [
     "All",
@@ -36,6 +37,7 @@ function WhiskyRegionSelect() {
     <Container>
       <label htmlFor="regions">Choose a region:</label>
       <select
+        value={filters.region}
         onChange={(e) =>
           dispatch(
             filterProducts({
