@@ -29,10 +29,8 @@ export const productSlice = createSlice({
       }
     },
     reset: (state) => {
-      console.log("STATE", current(state));
       state.filters = { search: "", region: "All" };
       state.display = products;
-      console.log("STATE2", state);
     },
   },
 });

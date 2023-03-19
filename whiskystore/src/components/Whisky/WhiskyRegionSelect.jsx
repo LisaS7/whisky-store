@@ -19,7 +19,6 @@ function WhiskyRegionSelect() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
   const { filters } = useSelector((state) => state.products);
-  console.log("products", products);
   const uniqueRegions = [
     "All",
     ...new Set(products.map((product) => product.region)),
