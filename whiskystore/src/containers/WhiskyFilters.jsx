@@ -6,6 +6,7 @@ import WhiskyRegionSelect from "../components/Whisky/WhiskyRegionSelect";
 import { MediumButton } from "../components/Components";
 
 const FilterControls = styled.section`
+  padding: 3rem;
   display: flex;
   align-items: center;
   gap: 2rem;

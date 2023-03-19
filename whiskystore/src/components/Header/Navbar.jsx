@@ -10,14 +10,27 @@ const Nav = styled.nav`
 
   & ul {
     display: flex;
-    gap: 2rem;
     list-style: none;
     margin: 0;
   }
+
+  & li {
+    width: 6vw;
+    height: 4vh;
+  }
+
   & a {
     font-size: 1.5rem;
     text-decoration: none;
     color: var(--lighter);
+  }
+
+  & a:hover {
+    color: var(--gold);
+    font-size: 1.7rem;
+    font-weight: 700;
+    transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
   }
 `;
 

@@ -7,7 +7,7 @@ const WhiskySection = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin: 3rem 4rem;
+  margin: 0rem 4rem;
 `;
 
 export default function WhiskyList() {
