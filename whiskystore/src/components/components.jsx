@@ -9,22 +9,6 @@ export const ButtonContainer = styled.div`
   margin-left: auto;
 `;
 
-// export const SmallButton = styled.button`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 30px !important;
-//   padding: 0.25rem;
-//   background-color: var(--gold);
-//   border: none;
-//   border-radius: 10%;
-
-//   & span {
-//     font-size: 1.3rem;
-//     margin: auto 0;
-//   }
-// `;
-
 export const MediumButton = styled.button`
   background-color: var(--gold);
   border: 2px solid #422800;
@@ -84,3 +68,32 @@ export const SmallButton = styled.button`
     transform: translate(2px, 2px);
   }
 `;
+
+// export const MediumButtonOutline = styled.button`
+//   background-color: transparent;
+//   border: 2px solid var(--lighter);
+//   border-radius: 20px;
+//   box-shadow: var(--header-background) 4px 4px 0 0;
+//   color: var(--gold);
+//   cursor: pointer;
+//   display: inline-block;
+//   font-weight: 600;
+//   font-size: 18px;
+//   padding: 0 18px;
+//   line-height: 50px;
+//   text-align: center;
+//   text-decoration: none;
+//   user-select: none;
+//   -webkit-user-select: none;
+//   touch-action: manipulation;
+
+//   &:hover {
+//     background-color: #caa974;
+//     color: var(--background);
+//   }
+
+//   &:active {
+//     box-shadow: #422800 2px 2px 0 0;
+//     transform: translate(2px, 2px);
+//   }
+// `;

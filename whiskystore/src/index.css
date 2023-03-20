@@ -10,6 +10,7 @@
   --dark-gold: #a46121;
   --gold: #bb9457;
   --lighter: #efe3d4;
+  --light-grey: #53514f;
 }
 
 body {
@@ -40,4 +41,11 @@ html {
 input {
   font-family: 'Imprima', sans-serif;
 
+}
+
+/* use opacity:0 to hide checkbox and use custom one instead  */
+/* this method is preferred over changing display: none or visibility: hidden  */
+/* as it is more accessible for screen readers  */
+.checkbox {
+  /* opacity: 0; */
 }

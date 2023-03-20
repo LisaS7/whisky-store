@@ -15,10 +15,10 @@ const Container = styled.div`
   }
 `;
 
-function WhiskyRegionSelect() {
+export default function RegionSelect() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  const { filters } = useSelector((state) => state.products);
+  const { region } = useSelector((state) => state.products.filters);
   const uniqueRegions = [
     "All",
     ...new Set(products.map((product) => product.region)),
@@ -34,9 +34,9 @@ function WhiskyRegionSelect() {
 
   return (
     <Container>
-      <label htmlFor="regions">Choose a region:</label>
+      <label htmlFor="regions">Region:</label>
       <select
-        value={filters.region}
+        value={region}
         onChange={(e) =>
           dispatch(
             filterProducts({
@@ -53,5 +53,3 @@ function WhiskyRegionSelect() {
     </Container>
   );
 }
-
-export default WhiskyRegionSelect;

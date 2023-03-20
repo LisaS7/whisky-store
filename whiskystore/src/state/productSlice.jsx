@@ -1,12 +1,15 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { products } from "../data/products";
 
+const flavours = products.map((product) => product.flavour);
+
 const initialState = {
   products: products,
   display: products,
   filters: {
     search: "",
     region: "All",
+    flavours: flavours,
   },
 };
 
@@ -27,6 +30,12 @@ export const productSlice = createSlice({
           (item) => item.region === state.filters.region
         );
       }
+
+      state.display = state.display.filter((product) =>
+        product.flavours.some((flavour) =>
+          state.filters.flavours.includes(flavour)
+        )
+      );
     },
     reset: (state) => {
       state.filters = { search: "", region: "All" };
