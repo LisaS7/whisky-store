@@ -6,13 +6,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 1.5rem;
-
-  & select {
-    font-size: 1.2rem;
-    padding: 0.5rem 2rem;
-    border-radius: 10px;
-  }
 `;
 
 export default function RegionSelect() {

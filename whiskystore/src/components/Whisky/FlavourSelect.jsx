@@ -12,8 +12,18 @@ const Container = styled.div`
   align-items: center;
   gap: 1rem;
 
-  & p {
-    font-size: 1.5rem;
+  & input,
+  button {
+    margin: 0;
+  }
+
+  & input {
+    width: 1px;
+    opacity: 0;
+  }
+
+  & label {
+    text-align: left;
   }
 `;
 
@@ -29,28 +39,13 @@ const ControlBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  & button {
-    margin: 0;
-  }
 `;
 
 const FlavourBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr 2fr);
-  column-gap: 4rem;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-size: 1rem;
-
-  & input {
-    margin: 0;
-    width: 1px;
-    opacity: 0;
-  }
-
-  & label {
-    text-align: left;
-  }
 `;
 
 export function Checkbox({ flavour, checked }) {

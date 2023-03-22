@@ -9,12 +9,16 @@ const FilterControls = styled.section`
   padding: 3rem;
   display: flex;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
+  font-size: 1.3rem;
 
   & select,
   input {
     background-color: var(--form-bg);
     color: var(--gold);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
   }
 
   & button {
@@ -24,13 +28,7 @@ const FilterControls = styled.section`
 
 const SearchBar = styled.div`
   padding: 2rem;
-  font-size: 1.5rem;
-
-  & input {
-    padding: 0.5rem 2rem;
-    border-radius: 5px;
-    font-size: 1.5rem;
-  }
+  font-size: 1.3rem;
 `;
 
 export default function WhiskyFilters() {
