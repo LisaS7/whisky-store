@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const ButtonContainer = styled.div`
@@ -69,31 +68,29 @@ export const SmallButton = styled.button`
   }
 `;
 
-// export const MediumButtonOutline = styled.button`
-//   background-color: transparent;
-//   border: 2px solid var(--lighter);
-//   border-radius: 20px;
-//   box-shadow: var(--header-background) 4px 4px 0 0;
-//   color: var(--gold);
-//   cursor: pointer;
-//   display: inline-block;
-//   font-weight: 600;
-//   font-size: 18px;
-//   padding: 0 18px;
-//   line-height: 50px;
-//   text-align: center;
-//   text-decoration: none;
-//   user-select: none;
-//   -webkit-user-select: none;
-//   touch-action: manipulation;
+export const MediumButtonOutline = styled.button`
+  background-color: transparent;
+  border: 1px solid var(--lighter);
+  border-radius: 20px;
+  box-shadow: var(--header-background) 4px 4px 0 0;
+  color: var(--gold);
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 
-//   &:hover {
-//     background-color: #caa974;
-//     color: var(--background);
-//   }
+  &:hover {
+    background-color: #caa974;
+    color: var(--background);
+  }
 
-//   &:active {
-//     box-shadow: #422800 2px 2px 0 0;
-//     transform: translate(2px, 2px);
-//   }
-// `;
+  &:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+`;

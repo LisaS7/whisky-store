@@ -1,7 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { products } from "../data/products";
 
-const flavours = products.map((product) => product.flavour);
+const flavours = [
+  ...new Set(products.map((product) => product.flavours).flat()),
+];
 
 const initialState = {
   products: products,
@@ -17,9 +19,35 @@ export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    selectAllFlavours: (state) => {
+      state.filters.flavours = flavours;
+      // console.log("select all", state.filters.flavours);
+      productSlice.caseReducers.filterProducts(state);
+    },
+    unselectAllFlavours: (state) => {
+      state.filters.flavours = [];
+      productSlice.caseReducers.filterProducts(state);
+    },
+    toggleFlavours: (state, action) => {
+      const { flavour, checked } = action.payload;
+      console.log(flavour, checked);
+      if (checked) {
+        state.filters.flavours = [
+          ...new Set([...state.filters.flavours, flavour]),
+        ];
+      } else {
+        state.filters.flavours = state.filters.flavours.filter(
+          (item) => item !== flavour
+        );
+      }
+      console.log("flavours end", [...state.filters.flavours]);
+      productSlice.caseReducers.filterProducts(state);
+    },
     filterProducts: (state, action) => {
-      const { filterType, filterValue } = action.payload;
-      state.filters[filterType] = filterValue;
+      if (action) {
+        const { filterType, filterValue } = action.payload;
+        state.filters[filterType] = filterValue;
+      }
 
       state.display = state.products.filter((product) =>
         product.name.toLowerCase().includes(state.filters.search.toLowerCase())
@@ -31,11 +59,14 @@ export const productSlice = createSlice({
         );
       }
 
-      state.display = state.display.filter((product) =>
-        product.flavours.some((flavour) =>
-          state.filters.flavours.includes(flavour)
-        )
-      );
+      for (const product of state.display) {
+        const inFilter = product.flavours.some((flavour) => {
+          return state.filters.flavours.includes(flavour);
+        });
+        if (!inFilter) {
+          state.display = state.display.filter((item) => item !== product);
+        }
+      }
     },
     reset: (state) => {
       state.filters = { search: "", region: "All" };
@@ -44,5 +75,11 @@ export const productSlice = createSlice({
   },
 });
 
-export const { filterProducts, reset } = productSlice.actions;
+export const {
+  filterProducts,
+  toggleFlavours,
+  selectAllFlavours,
+  unselectAllFlavours,
+  reset,
+} = productSlice.actions;
 export default productSlice.reducer;
