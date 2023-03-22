@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -54,14 +53,11 @@ const FlavourBox = styled.div`
   }
 `;
 
-export function Checkbox({ flavour }) {
+export function Checkbox({ flavour, checked }) {
   const dispatch = useDispatch();
-  const [checked, setChecked] = useState(true);
 
   function handleChange(e) {
-    const newValue = e.target.checked;
-    setChecked(newValue);
-    dispatch(toggleFlavours({ flavour, checked: newValue }));
+    dispatch(toggleFlavours({ flavour, checked: e.target.checked }));
   }
 
   return (
@@ -87,14 +83,28 @@ export function Checkbox({ flavour }) {
 export default function FlavourSelect() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const { flavours } = useSelector((state) => state.products.filters);
 
   const uniqueFlavours = [
     ...new Set(products.map((product) => product.flavours).flat()),
   ];
 
   const flavourElements = uniqueFlavours.map((flavour) => (
-    <Checkbox key={flavour} flavour={flavour} />
+    <Checkbox
+      key={flavour}
+      flavour={flavour}
+      checked={flavours.includes(flavour)}
+    />
   ));
+
+  function handleClick(e) {
+    if (e.target.id === "select") {
+      dispatch(selectAllFlavours());
+    } else {
+      dispatch(unselectAllFlavours());
+    }
+    console.log(e);
+  }
 
   return (
     <Container>
@@ -103,10 +113,10 @@ export default function FlavourSelect() {
         <FlavourBox>{flavourElements}</FlavourBox>
       </ScrollBox>
       <ControlBox>
-        <MediumButtonOutline onClick={() => dispatch(selectAllFlavours())}>
+        <MediumButtonOutline id="select" onClick={handleClick}>
           Select All
         </MediumButtonOutline>
-        <MediumButtonOutline onClick={() => dispatch(unselectAllFlavours())}>
+        <MediumButtonOutline id="unselect" onClick={handleClick}>
           Unselect All
         </MediumButtonOutline>
       </ControlBox>

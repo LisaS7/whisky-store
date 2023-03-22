@@ -21,7 +21,6 @@ export const productSlice = createSlice({
   reducers: {
     selectAllFlavours: (state) => {
       state.filters.flavours = flavours;
-      // console.log("select all", state.filters.flavours);
       productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
     },
     unselectAllFlavours: (state) => {
