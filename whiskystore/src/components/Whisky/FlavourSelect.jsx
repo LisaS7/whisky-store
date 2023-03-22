@@ -20,6 +20,7 @@ const Container = styled.div`
 
 const ScrollBox = styled.div`
   height: 12vh;
+  width: 30vw;
   overflow-x: scroll;
   padding: 1rem;
   border: 2px solid var(--light-grey);
@@ -38,12 +39,14 @@ const ControlBox = styled.div`
 const FlavourBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr 2fr);
+  column-gap: 4rem;
   gap: 0.5rem;
   font-size: 1rem;
 
   & input {
     margin: 0;
-    width: 30px;
+    width: 1px;
+    opacity: 0;
   }
 
   & label {
@@ -64,7 +67,9 @@ export function Checkbox({ flavour }) {
   return (
     <>
       <div>
-        <span className="material-symbols-outlined">check_circle</span>
+        <span className="material-symbols-outlined">
+          {checked ? "check_circle" : "circle"}
+        </span>
         <input
           className="checkbox"
           type="checkbox"

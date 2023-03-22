@@ -22,15 +22,14 @@ export const productSlice = createSlice({
     selectAllFlavours: (state) => {
       state.filters.flavours = flavours;
       // console.log("select all", state.filters.flavours);
-      productSlice.caseReducers.filterProducts(state);
+      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
     },
     unselectAllFlavours: (state) => {
       state.filters.flavours = [];
-      productSlice.caseReducers.filterProducts(state);
+      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
     },
     toggleFlavours: (state, action) => {
       const { flavour, checked } = action.payload;
-      console.log(flavour, checked);
       if (checked) {
         state.filters.flavours = [
           ...new Set([...state.filters.flavours, flavour]),
@@ -40,7 +39,6 @@ export const productSlice = createSlice({
           (item) => item !== flavour
         );
       }
-      console.log("flavours end", [...state.filters.flavours]);
       productSlice.caseReducers.filterProducts(state);
     },
     filterProducts: (state, action) => {
