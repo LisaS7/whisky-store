@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import emptyCart from "./empty-cart.png";
-import { MediumButton } from "../Components";
+import { MediumButton } from "../FormComponents/Buttons";
 
 const Container = styled.section`
   display: flex;

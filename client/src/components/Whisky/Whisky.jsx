@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToBasket, decreaseQuantity } from "../../state/basketSlice";
 import styled from "styled-components";
-import { SmallButton, ButtonContainer } from "../Components";
+import { SmallButton, ButtonContainer } from "../FormComponents/Buttons";
 import { formatPrice } from "../../utils/currency";
 
 const WhiskyCard = styled.div`

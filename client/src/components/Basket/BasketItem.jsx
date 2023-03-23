@@ -7,7 +7,7 @@ import {
   removeFromBasket,
 } from "../../state/basketSlice";
 import { formatPrice } from "../../utils/currency";
-import { SmallButton, ButtonContainer } from "../Components";
+import { SmallButton, ButtonContainer } from "../FormComponents/Buttons";
 
 const Container = styled.div`
   display: grid;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProducts, reset } from "../state/productSlice";
 import RegionSelect from "../components/Whisky/RegionSelect";
-import { MediumButton } from "../components/Components";
+import { MediumButton } from "../components/FormComponents/Buttons";
 import FlavourSelect from "../components/Whisky/FlavourSelect";
 
 const FilterControls = styled.section`

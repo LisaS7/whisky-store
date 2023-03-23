@@ -5,7 +5,8 @@ import {
   selectAllFlavours,
   unselectAllFlavours,
 } from "../../state/productSlice";
-import { MediumButtonOutline } from "../Components";
+import { MediumButtonOutline } from "../FormComponents/Buttons";
+import { Checkbox } from "../FormComponents/Checkbox";
 
 const Container = styled.div`
   display: flex;
@@ -15,15 +16,6 @@ const Container = styled.div`
   & input,
   button {
     margin: 0;
-  }
-
-  & input {
-    width: 1px;
-    opacity: 0;
-  }
-
-  & label {
-    text-align: left;
   }
 `;
 
@@ -43,37 +35,10 @@ const ControlBox = styled.div`
 
 const FlavourBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr 2fr);
-  gap: 0.4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
   font-size: 1rem;
 `;
-
-export function Checkbox({ flavour, checked }) {
-  const dispatch = useDispatch();
-
-  function handleChange(e) {
-    dispatch(toggleFlavours({ flavour, checked: e.target.checked }));
-  }
-
-  return (
-    <>
-      <div>
-        <span className="material-symbols-outlined">
-          {checked ? "check_circle" : "circle"}
-        </span>
-        <input
-          className="checkbox"
-          type="checkbox"
-          id={flavour}
-          name={flavour}
-          checked={checked}
-          onChange={(e) => handleChange(e)}
-        />
-      </div>
-      <label htmlFor={flavour}>{flavour}</label>
-    </>
-  );
-}
 
 export default function FlavourSelect() {
   const dispatch = useDispatch();
@@ -88,6 +53,7 @@ export default function FlavourSelect() {
     <Checkbox
       key={flavour}
       flavour={flavour}
+      action={toggleFlavours}
       checked={flavours.includes(flavour)}
     />
   ));
