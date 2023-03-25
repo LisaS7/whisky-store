@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../state/productSlice";
 import WhiskyList from "../components/Whisky/WhiskyList";
 import WhiskyFilters from "./WhiskyFilters";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../state/productSlice";
+const baseURL = "http://localhost:9000/api/whiskies/";
 
 export default function WhiskyBox() {
-  const temp = useDispatch(fetchProducts());
-  console.log("temp", temp);
-  const { data } = useSelector((state) => state.data);
-  // console.log("x", data);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
+  async function fetchProducts() {
+    const response = await fetch(baseURL);
+    const jsonData = await response.json();
+    setData(jsonData);
+  }
+
+  useEffect(() => {
+    fetchProducts();
+    dispatch(getProducts(data));
+  }, []);
 
   return (
     <main>

@@ -1,7 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import { products } from "../data/products";
-import { getProducts } from "../ProductService";
 
 const flavours = [
   ...new Set(products.map((product) => product.flavours).flat()),
@@ -9,7 +7,6 @@ const flavours = [
 
 const initialState = {
   loading: true,
-  data: [],
   products: products,
   display: products,
   filters: {
@@ -23,9 +20,9 @@ export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    gotProducts: (state, action) => {
+    getProducts: (state, action) => {
       state.loading = false;
-      state.data = action.payload;
+      state.products = action.payload;
     },
     selectAllFlavours: (state) => {
       state.filters.flavours = flavours;
@@ -81,17 +78,12 @@ export const productSlice = createSlice({
 });
 
 export const {
-  gotProducts,
+  getProducts,
   filterProducts,
   toggleFlavours,
   selectAllFlavours,
   unselectAllFlavours,
   reset,
 } = productSlice.actions;
-
-export const fetchProducts = () => async (useDispatch) => {
-  const data = getProducts();
-  useDispatch(gotProducts(data));
-};
 
 export default productSlice.reducer;
