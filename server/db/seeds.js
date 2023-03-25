@@ -3,7 +3,6 @@ db.dropDatabase();
 
 db.whiskies.insertMany([
   {
-    id: 1,
     name: "Glenfiddich 21 Year Old",
     region: "Speyside",
     flavours: ["vanilla", "banana", "citrus", "spice"],
@@ -13,7 +12,6 @@ db.whiskies.insertMany([
     image: "./images/product1.png",
   },
   {
-    id: 2,
     name: "Smokehead Unfiltered Single Malt",
     region: "Islay",
     flavours: [
@@ -30,7 +28,6 @@ db.whiskies.insertMany([
     image: "./images/product2.png",
   },
   {
-    id: 3,
     name: "Tomatin 14 Year Old",
     region: "Highland",
     flavours: ["toffee", "oak", "honey", "almonds", "red berries"],
@@ -40,7 +37,6 @@ db.whiskies.insertMany([
     image: "./images/product3.png",
   },
   {
-    id: 4,
     name: "Bowmore 15 Year Old",
     region: "Islay",
     flavours: ["chocolate", "fruit", "smoke"],
@@ -50,7 +46,6 @@ db.whiskies.insertMany([
     image: "./images/product4.png",
   },
   {
-    id: 5,
     name: "Bunnahabhain 11 Year Old",
     region: "Islay",
     flavours: ["fruit", "smoke", "honey"],
@@ -60,7 +55,6 @@ db.whiskies.insertMany([
     image: "./images/product5.png",
   },
   {
-    id: 6,
     name: "GlenAllachie 15 Year Old",
     region: "Speyside",
     flavours: ["toffee", "vanilla", "butterscotch", "citrus"],

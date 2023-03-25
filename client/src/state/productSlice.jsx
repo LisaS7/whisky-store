@@ -1,13 +1,22 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import { products } from "../data/products";
+import { getProducts } from "../ProductService";
+
+const getWhiskies = createAsyncThunk("whiskies/fetchWhiskies", async () => {
+  return await getProducts();
+});
+
+console.log(products);
+console.log(getWhiskies);
 
 const flavours = [
   ...new Set(products.map((product) => product.flavours).flat()),
 ];
 
 const initialState = {
-  products: products,
-  display: products,
+  products: { whiskies: [], status: "idle", error: null },
+  display: products.whiskies,
   filters: {
     search: "",
     region: "All",
@@ -46,7 +55,7 @@ export const productSlice = createSlice({
         state.filters[filterType] = filterValue;
       }
 
-      state.display = state.products.filter((product) =>
+      state.display = state.products.whiskies.filter((product) =>
         product.name.toLowerCase().includes(state.filters.search.toLowerCase())
       );
 
@@ -80,3 +89,4 @@ export const {
   reset,
 } = productSlice.actions;
 export default productSlice.reducer;
+export const getAllWhiskies = (state) => state.products.whiskies;
