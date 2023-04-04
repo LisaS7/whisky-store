@@ -17,7 +17,5 @@ export default function WhiskyList() {
     <Whisky key={product.id} whisky={product} />
   ));
 
-  console.log(display);
-
   return <WhiskySection>{whiskies}</WhiskySection>;
 }

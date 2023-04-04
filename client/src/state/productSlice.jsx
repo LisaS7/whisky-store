@@ -4,6 +4,7 @@ const initialState = {
   loading: true,
   products: [],
   display: [],
+  allFlavours: [],
   filters: {
     search: "",
     region: "All",
@@ -19,15 +20,13 @@ export const productSlice = createSlice({
       state.loading = false;
       state.products = action.payload;
       state.display = action.payload;
-      productSlice.caseReducers.setFlavours(state);
-    },
-    setFlavours: (state) => {
-      state.filters.flavours = [
+      state.allFlavours = [
         ...new Set(state.products.map((product) => product.flavours).flat()),
       ];
+      state.filters.flavours = state.allFlavours;
     },
     selectAllFlavours: (state) => {
-      productSlice.caseReducers.setFlavours(state);
+      state.filters.flavours = state.allFlavours;
       productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
     },
     unselectAllFlavours: (state) => {
@@ -73,8 +72,11 @@ export const productSlice = createSlice({
       }
     },
     reset: (state) => {
-      state.filters = { search: "", region: "All", flavours: [] };
-      productSlice.caseReducers.setFlavours(state);
+      state.filters = {
+        search: "",
+        region: "All",
+        flavours: state.allFlavours,
+      };
       state.display = state.products;
     },
   },

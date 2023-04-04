@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -43,19 +42,8 @@ const FlavourBox = styled.div`
 
 export default function FlavourSelect() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { allFlavours } = useSelector((state) => state.products);
   const { flavours } = useSelector((state) => state.products.filters);
-
-  let uniqueFlavours = [];
-
-  const flavourElements = uniqueFlavours.map((flavour) => (
-    <Checkbox
-      key={flavour}
-      flavour={flavour}
-      action={toggleFlavours}
-      checked={flavours?.includes(flavour)}
-    />
-  ));
 
   function handleClick(e) {
     if (e.target.id === "select") {
@@ -65,11 +53,14 @@ export default function FlavourSelect() {
     }
   }
 
-  useEffect(() => {
-    uniqueFlavours = [
-      ...new Set(products.map((product) => product.flavours).flat()),
-    ];
-  }, [products]);
+  const flavourElements = allFlavours.map((flavour) => (
+    <Checkbox
+      key={flavour}
+      flavour={flavour}
+      action={toggleFlavours}
+      checked={flavours?.includes(flavour)}
+    />
+  ));
 
   return (
     <Container>
