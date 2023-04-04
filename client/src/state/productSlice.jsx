@@ -71,7 +71,7 @@ export const productSlice = createSlice({
       }
     },
     reset: (state) => {
-      state.filters = { search: "", region: "All" };
+      state.filters = { search: "", region: "All", flavours: flavours };
       state.display = products;
     },
   },

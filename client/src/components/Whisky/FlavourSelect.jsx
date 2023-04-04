@@ -54,7 +54,7 @@ export default function FlavourSelect() {
       key={flavour}
       flavour={flavour}
       action={toggleFlavours}
-      checked={flavours.includes(flavour)}
+      checked={flavours?.includes(flavour)}
     />
   ));
 
@@ -64,7 +64,6 @@ export default function FlavourSelect() {
     } else {
       dispatch(unselectAllFlavours());
     }
-    console.log(e);
   }
 
   return (
