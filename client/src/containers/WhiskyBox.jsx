@@ -24,9 +24,9 @@ export default function WhiskyBox() {
   }, [data]);
 
   return (
-    <main>
+    <>
       <WhiskyFilters />
       <WhiskyList />
-    </main>
+    </>
   );
 }

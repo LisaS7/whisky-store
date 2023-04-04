@@ -1,16 +1,30 @@
 import React from "react";
-import BasketList from "../components/Basket/BasketList";
+import { useSelector } from "react-redux";
+import EmptyBasket from "../components/Basket/EmptyBasket";
+import BasketItem from "../components/Basket/BasketItem";
+import BasketTotal from "../components/Basket/BasketTotal";
 import styled from "styled-components";
 
-const BasketMain = styled.main`
-  display: flex;
-  justify-content: space-between;
+const BasketSection = styled.section`
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 `;
 
 export default function BasketBox() {
-  return (
-    <BasketMain>
-      <BasketList />
-    </BasketMain>
-  );
+  const { basket } = useSelector((state) => state.basket);
+
+  const basketItems = basket.map((product, index) => (
+    <BasketItem key={index} product={product} />
+  ));
+
+  if (basket.length) {
+    return (
+      <BasketSection>
+        <div>{basketItems}</div>
+        <BasketTotal />
+      </BasketSection>
+    );
+  }
+
+  return <EmptyBasket />;
 }
