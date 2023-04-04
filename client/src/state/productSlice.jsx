@@ -20,7 +20,7 @@ export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getProducts: (state, action) => {
+    setProducts: (state, action) => {
       state.loading = false;
       state.products = action.payload;
     },
@@ -78,7 +78,7 @@ export const productSlice = createSlice({
 });
 
 export const {
-  getProducts,
+  setProducts,
   filterProducts,
   toggleFlavours,
   selectAllFlavours,

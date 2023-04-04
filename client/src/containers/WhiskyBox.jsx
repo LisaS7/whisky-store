@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../state/productSlice";
+import { setProducts } from "../state/productSlice";
 import WhiskyList from "../components/Whisky/WhiskyList";
 import WhiskyFilters from "./WhiskyFilters";
+import { products } from "../data/products";
 const baseURL = "http://localhost:9000/api/whiskies/";
 
 export default function WhiskyBox() {
@@ -17,8 +18,11 @@ export default function WhiskyBox() {
 
   useEffect(() => {
     fetchProducts();
-    dispatch(getProducts(data));
   }, []);
+
+  useEffect(() => {
+    dispatch(setProducts(data));
+  }, [data]);
 
   return (
     <main>
