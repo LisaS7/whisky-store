@@ -27,11 +27,11 @@ export const productSlice = createSlice({
     },
     selectAllFlavours: (state) => {
       state.filters.flavours = state.allFlavours;
-      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
+      productSlice.caseReducers.filterProducts(state); // applies the filters
     },
     unselectAllFlavours: (state) => {
       state.filters.flavours = [];
-      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
+      productSlice.caseReducers.filterProducts(state); // applies the filters
     },
     toggleFlavours: (state, action) => {
       const { flavour, checked } = action.payload;
@@ -52,21 +52,24 @@ export const productSlice = createSlice({
         state.filters[filterType] = filterValue;
       }
 
+      // search box
       state.display = state.products.filter((product) =>
         product.name.toLowerCase().includes(state.filters.search.toLowerCase())
       );
 
+      // regions
       if (state.filters.region !== "All") {
         state.display = state.display.filter(
           (item) => item.region === state.filters.region
         );
       }
 
+      // flavours
       for (const product of state.display) {
-        const inFilter = product.flavours.some((flavour) => {
+        const productIncludesFlavours = product.flavours.some((flavour) => {
           return state.filters.flavours.includes(flavour);
         });
-        if (!inFilter) {
+        if (!productIncludesFlavours) {
           state.display = state.display.filter((item) => item !== product);
         }
       }
