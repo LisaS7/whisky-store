@@ -10,7 +10,7 @@ db.whiskies.insertMany([
     price: 16900,
     abv: 40,
     size: 70,
-    image: "./images/product1.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product1.png",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ db.whiskies.insertMany([
     price: 3700,
     abv: 46,
     size: 70,
-    image: "./images/product2.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product2.png",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ db.whiskies.insertMany([
     price: 6300,
     abv: 46,
     size: 70,
-    image: "./images/product3.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product3.png",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ db.whiskies.insertMany([
     price: 6200,
     abv: 43,
     size: 70,
-    image: "./images/product4.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product4.png",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ db.whiskies.insertMany([
     price: 4700,
     abv: 43,
     size: 70,
-    image: "./images/product5.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product5.png",
   },
   {
     id: 6,
@@ -67,6 +67,6 @@ db.whiskies.insertMany([
     price: 6600,
     abv: 46,
     size: 70,
-    image: "./images/product6.png",
+    image: "https://whisky-product-images.s3.eu-west-2.amazonaws.com/product6.png",
   },
 ]);

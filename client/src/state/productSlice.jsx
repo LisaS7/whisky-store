@@ -1,18 +1,13 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { products } from "../data/products";
-
-const flavours = [
-  ...new Set(products.map((product) => product.flavours).flat()),
-];
 
 const initialState = {
   loading: true,
-  products: products,
-  display: products,
+  products: [],
+  display: [],
   filters: {
     search: "",
     region: "All",
-    flavours: flavours,
+    flavours: [],
   },
 };
 
@@ -23,9 +18,16 @@ export const productSlice = createSlice({
     setProducts: (state, action) => {
       state.loading = false;
       state.products = action.payload;
+      state.display = action.payload;
+      productSlice.caseReducers.setFlavours(state);
+    },
+    setFlavours: (state) => {
+      state.filters.flavours = [
+        ...new Set(state.products.map((product) => product.flavours).flat()),
+      ];
     },
     selectAllFlavours: (state) => {
-      state.filters.flavours = flavours;
+      productSlice.caseReducers.setFlavours(state);
       productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
     },
     unselectAllFlavours: (state) => {
@@ -71,8 +73,9 @@ export const productSlice = createSlice({
       }
     },
     reset: (state) => {
-      state.filters = { search: "", region: "All", flavours: flavours };
-      state.display = products;
+      state.filters = { search: "", region: "All", flavours: [] };
+      productSlice.caseReducers.setFlavours(state);
+      state.display = state.products;
     },
   },
 });

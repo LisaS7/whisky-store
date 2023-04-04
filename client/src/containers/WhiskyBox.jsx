@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { setProducts } from "../state/productSlice";
 import WhiskyList from "../components/Whisky/WhiskyList";
 import WhiskyFilters from "./WhiskyFilters";
-import { products } from "../data/products";
 const baseURL = "http://localhost:9000/api/whiskies/";
 
 export default function WhiskyBox() {
