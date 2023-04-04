@@ -1,17 +1,14 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { products } from "../data/products";
-
-const flavours = [
-  ...new Set(products.map((product) => product.flavours).flat()),
-];
 
 const initialState = {
-  products: products,
-  display: products,
+  loading: true,
+  products: [],
+  display: [],
+  allFlavours: [],
   filters: {
     search: "",
     region: "All",
-    flavours: flavours,
+    flavours: [],
   },
 };
 
@@ -19,13 +16,22 @@ export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    setProducts: (state, action) => {
+      state.loading = false;
+      state.products = action.payload;
+      state.display = action.payload;
+      state.allFlavours = [
+        ...new Set(state.products.map((product) => product.flavours).flat()),
+      ];
+      state.filters.flavours = state.allFlavours;
+    },
     selectAllFlavours: (state) => {
-      state.filters.flavours = flavours;
-      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
+      state.filters.flavours = state.allFlavours;
+      productSlice.caseReducers.filterProducts(state); // applies the filters
     },
     unselectAllFlavours: (state) => {
       state.filters.flavours = [];
-      productSlice.caseReducers.filterProducts(state); // calls the filterProducts function below to apply the filters
+      productSlice.caseReducers.filterProducts(state); // applies the filters
     },
     toggleFlavours: (state, action) => {
       const { flavour, checked } = action.payload;
@@ -46,37 +52,46 @@ export const productSlice = createSlice({
         state.filters[filterType] = filterValue;
       }
 
+      // search box
       state.display = state.products.filter((product) =>
         product.name.toLowerCase().includes(state.filters.search.toLowerCase())
       );
 
+      // regions
       if (state.filters.region !== "All") {
         state.display = state.display.filter(
           (item) => item.region === state.filters.region
         );
       }
 
+      // flavours
       for (const product of state.display) {
-        const inFilter = product.flavours.some((flavour) => {
+        const productIncludesFlavours = product.flavours.some((flavour) => {
           return state.filters.flavours.includes(flavour);
         });
-        if (!inFilter) {
+        if (!productIncludesFlavours) {
           state.display = state.display.filter((item) => item !== product);
         }
       }
     },
     reset: (state) => {
-      state.filters = { search: "", region: "All" };
-      state.display = products;
+      state.filters = {
+        search: "",
+        region: "All",
+        flavours: state.allFlavours,
+      };
+      state.display = state.products;
     },
   },
 });
 
 export const {
+  setProducts,
   filterProducts,
   toggleFlavours,
   selectAllFlavours,
   unselectAllFlavours,
   reset,
 } = productSlice.actions;
+
 export default productSlice.reducer;

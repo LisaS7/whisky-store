@@ -42,21 +42,8 @@ const FlavourBox = styled.div`
 
 export default function FlavourSelect() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { allFlavours } = useSelector((state) => state.products);
   const { flavours } = useSelector((state) => state.products.filters);
-
-  const uniqueFlavours = [
-    ...new Set(products.map((product) => product.flavours).flat()),
-  ];
-
-  const flavourElements = uniqueFlavours.map((flavour) => (
-    <Checkbox
-      key={flavour}
-      flavour={flavour}
-      action={toggleFlavours}
-      checked={flavours.includes(flavour)}
-    />
-  ));
 
   function handleClick(e) {
     if (e.target.id === "select") {
@@ -64,8 +51,16 @@ export default function FlavourSelect() {
     } else {
       dispatch(unselectAllFlavours());
     }
-    console.log(e);
   }
+
+  const flavourElements = allFlavours.map((flavour) => (
+    <Checkbox
+      key={flavour}
+      flavour={flavour}
+      action={toggleFlavours}
+      checked={flavours?.includes(flavour)}
+    />
+  ));
 
   return (
     <Container>

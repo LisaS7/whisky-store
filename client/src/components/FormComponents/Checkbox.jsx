@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
+const StyledCheck = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+
+  & input {
+    opacity: 0;
+  }
+`;
+
 export function Checkbox({ flavour, checked, action }) {
   const dispatch = useDispatch();
-
-  const StyledCheck = styled.label`
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-align: left;
-
-    & input {
-      opacity: 0;
-    }
-  `;
 
   function handleChange(e) {
     dispatch(action({ flavour, checked: e.target.checked }));
